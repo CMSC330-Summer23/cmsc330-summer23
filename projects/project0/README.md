@@ -215,5 +215,5 @@ If your macOS version is less than 10.15, follow [the directions for macOS](#mac
 - If you have run the special instructions in previous classes or semesters, undo by uninstalling homebrew:
   - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"`
   - You will probably have leftover files in `/opt/homebrew` or `/usr/local`. We will *try* to help you delete them in OH.
-- Run `brew install` INDIVIDUALLY on each of ocaml, opam, openssl.
+- Afterwards, run `brew install` INDIVIDUALLY on each of ocaml, opam, openssl.
   - so `brew install ocaml`, `brew install opam`, etc.
