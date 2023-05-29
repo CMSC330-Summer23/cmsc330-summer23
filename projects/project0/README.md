@@ -174,7 +174,7 @@ have your Github account linked here, click the `Link a GitHub account` button a
 
 Whenever you want to submit your project to gradescope, you will need to push your latest version to your repo. Follow these steps to do so:
 
-First, make sure all your changes are pushed to github using the `git add`, `git commit`, and `git push` commands.
+First, make sure all your changes are pushed to github using the `git add`, `git commit`, and `git push` commands. We will teach you basic git usage in the first few days of the course, but you can refer to [my notes](https://bakalian.cs.umd.edu/assets/notes/git.pdf) for assistance. Additionally you can refer to a [testing repo](https://github.com/CliffBakalian/git-basics) I made, but it's recommended you make your own.
 
 Next, to submit your project, you can run `submit` from your project directory.
 
@@ -215,5 +215,5 @@ If your macOS version is less than 10.15, follow [the directions for macOS](#mac
 - If you have run the special instructions in previous classes or semesters, undo by uninstalling homebrew:
   - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"`
   - You will probably have leftover files in `/opt/homebrew` or `/usr/local`. We will *try* to help you delete them in OH.
-- Run `brew install` INDIVIDUALLY on each of ocaml, opam, openssl.
+- Afterwards, run `brew install` INDIVIDUALLY on each of ocaml, opam, openssl.
   - so `brew install ocaml`, `brew install opam`, etc.
