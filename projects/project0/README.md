@@ -76,8 +76,8 @@ These instructions assume you have a Debian-based system (e.g. Ubuntu).  If you 
     - Run `source ~/.profile` (or the file you just edited)
 4. Initialize OCaml
     - Run `opam update`
-    - We will be using OCaml version 4.13.X. Run `ocaml -version` to check which version is currently installed
-    - If you are already on version 4.13.X, you can skip to #5
+    - We will be using OCaml version 4.13.X or higher. Run `ocaml -version` to check which version is currently installed
+    - If you are already on version 4.13.X or higher, you can skip to #5
     - If you are on another version, run `opam switch 4.13.0`.  If you get an error saying that switch is not currently installed, run `opam switch create 4.13.0`. (This may take a while. Please be patient)
     - Run `eval $(opam env)`
     - Ensure you are now on the correct version by running `ocaml -version`
@@ -113,8 +113,8 @@ These instructions assume you have a Debian-based system (e.g. Ubuntu).  If you 
     - Run `source ~/.profile` (or the file you just edited)
 5. Initialize OCaml
     - Run `opam update`
-    - We will be using OCaml version 4.13.X. Run `ocaml -version` to check which version is currently installed
-    - If you are already on 4.13.X, you can skip to #6
+    - We will be using OCaml version 4.13.X or higher. Run `ocaml -version` to check which version is currently installed
+    - If you are already on 4.13.X or higher, you can skip to #6
     - If you are on another version, run `opam switch 4.13.0`
     - If you get an error saying that switch is not currently installed, run `opam switch create 4.13.0`. (This may take a while. Please be patient)
       - While installing the new switch, if you get an error for `bwrap`, first remove the `.opam` directory using `rm -r ~/.opam` and then reinitialize opam by **disabling sanboxing** using `opam init --disable-sandboxing`. Type "n" when prompted to modify `~/.profile`. Once opam has been initialized, rerun `opam switch create 4.13.0`
@@ -148,9 +148,9 @@ Check the [Special macOS Instructions](#special-macos-instructions) to check if 
     - Run  `source ~/.zshrc` or `source ~/.bash_profile` (or the file mentioned above)
 6. Initialize OCaml
     - Run `opam update`
-    - We will be using OCaml version 4.13.X.  Run `ocaml -version` to check
+    - We will be using OCaml version 4.13.X or higher.  Run `ocaml -version` to check
       which version is currently installed
-    - If you are already on 4.13.X, you can skip to #7
+    - If you are already on 4.13.X or higher, you can skip to #7
     - If you are on another version, run `opam switch 4.13.0`.  If you get an
       error saying that switch is not currently installed, run `opam switch
       create 4.13.0`. (This may take a while. Please be patient)
