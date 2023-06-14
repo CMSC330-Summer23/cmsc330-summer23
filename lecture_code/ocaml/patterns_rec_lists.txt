@@ -1,0 +1,148 @@
+Expressions and their types
+(e1:int (-/*+) e2:int):int
+(e1:float(-/*+). e2:float):float
+(e1:sting ^ e2:string):string
+(not e:bool): bool
+(e1:bool && e2: bool): bool
+(e1:bool || e2: bool): bool
+(e1:'a (=,>,<,>=,<=) e2:'a): bool
+
+(if e1:bool then e2:'a else e3:'a):'a
+  
+(let var = e1:'a in e2:'b):'b
+let x = 4 in x
+(let var p1:'a p2:'b ... = e1:'a in e1):'a
+
+(fun p1:'a p2:'b ... -> e1:'a):'a
+
+let area l w = l * w is much nicer to write than
+let area = fun l -> fun w -> l * w
+
+currying is a partial application of a function
+
+let area = (fun l -> (fun w -> l * w))
+area 3 -> (fun w -> l * w, l = 3)
+(fun w -> l * w,l=3) 4 => 12
+ closure is a (code,binding list)
+ closure looks like ((fun w -> l * w),[l=3])
+
+let foo x y = if x then y + 1 else y in foo
+bool -> int -> int 
+
+
+let area l w = l * w
+let partial = area 3, we then binding 3 to l
+let swap x y = area y x
+swap 3 binds 3 to w in the area function
+
+
+new expression: match expression
+(match e1:'a with
+ p1 -> e2:'b
+|p2 -> e3:'b
+...):'b
+
+switch(x):
+case 1 -> return 3;
+case 2 -> return 4;
+default -> 
+
+
+
+list expression
+([1;2;3;4;]): int list
+
+e1:'a :: e2:'a list
+cons(int x, int[] y);;
+
+([e1:'a;e2:'a;...]):'a list
+
+
+any list takes the form of 
+item -> rest of list
+|empty list
+
+h::t -> represents the pattern of a
+        list item::rest of list
+[1;2;3]
+h = 1
+t = [2;3]
+h::t
+1::[2;3]
+
+a::b::c
+1::2::[3]
+
+[1;2;3;4;5]
+1::2::[3;4;5]
+a = 1
+b = 2
+c = [3;4;5]
+
+[1]
+1::[]
+a::b
+a = 1
+b = []
+
+let pm x = match x with
+[] -> -1
+|h::t -> h
+
+let pm2 x = match x with
+[] -> []
+|h::t -> t
+
+let pm3 x = match x with
+[] -> 0
+a::[] -> a
+a::b::c -> a + b
+
+let pm4 x = match x with
+[] -> 0
+|a::[] -> a
+|a::b::[] -> a + b
+|a::b::c::[] -> c
+
+let rec get_last x = match x with
+[] -> -1
+|a::[] -> a
+|h::t -> get_last t;;
+
+let rec get_last_wrong x = match x with
+[] -> -1
+|h::t -> get_last_wrong t;;
+
+GET_LAST TRACE
+get_last [1;2;3] = 
+[] -> no
+a::[] -> no
+h::t -> h = 1, t = [2;3] so get_last [2;3]
+
+get_last [2;3]
+[] -> no
+a::[] -> no
+h::t -> h = 2, t = [3] so get_list [3]
+
+get_last [3]
+[] -> no
+a::[] -> a = 3 so return 3
+
+GET_LAST_WRONG TRACE
+get_last_wrong [1;2]
+[] -> no
+h::t -> h = 1, t = [2] so get_last_wrong [2]
+
+get_last_wrong [2]
+[] -> no
+h::t -> h = 2, t = [] so get_last_wrong []
+
+get_last_wrong []
+[] -> yes so return -1
+
+
+
+
+
+
+
