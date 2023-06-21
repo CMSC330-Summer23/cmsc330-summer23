@@ -1,0 +1,7 @@
+(library
+  (name lexparse)
+  (modules lp lpTypes)
+  (libraries str))
+(env
+  (dev
+    (flags (:standard -w -A))))

@@ -1,0 +1,27 @@
+(lang dune 3.8)
+
+(name lexparse)
+
+(generate_opam_files false)
+
+(source
+ (github umd-cmsc330/summer23))
+
+(authors "Cliff Bakalian")
+
+(maintainers "Cliff Bakalian")
+
+(license LICENSE)
+
+(documentation https://url/to/documentation)
+
+(package
+ (name lexparse)
+ (synopsis "A sample lexer and parser for Math-ew")
+ (description "Used for demonstration in class how to build one")
+ (depends ocaml dune)
+ (allow_empty)
+ (tags
+  (topics "to describe" your project)))
+
+; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
