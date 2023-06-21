@@ -29,9 +29,9 @@ let lexer str =
 let rec parse_help lst =  match lst with
   [] -> failwith "parser failed"
   |Num(x)::t -> Leaf(x),t
-  |Op(x)::t -> let lefttree,rest = parse_help t in 
-               let righttree,rest = parse_help rest in 
-               Node(x,lefttree,righttree),rest
+  |Op(x)::t -> let lefttree,rest1 = parse_help t in 
+               let righttree,rest2 = parse_help rest1 in 
+               Node(x,lefttree,righttree),rest2
   |_ -> failwith "parse error"
   
 let rec parse lst = 
