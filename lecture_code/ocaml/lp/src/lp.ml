@@ -9,25 +9,21 @@ open LpTypes
 *)
 
 
-let lexer input = 
-  let length = String.length input in 
-    let rec tok pos = 
-      if pos >= length then []
-      else if Str.string_match (Str.regexp "-?[0-9]+") input pos then 
-        let value = Str.matched_string input in
-        Num(int_of_string value)::(tok (pos + String.length value))
-      else if Str.string_match (Str.regexp "\\+") input pos then 
-        Op("+")::(tok (pos + 1)) 
-      else if Str.string_match (Str.regexp "\\-") input pos then 
-        Op("-")::(tok (pos + 1))
-      else if Str.string_match (Str.regexp "\\*") input pos then 
-        Op("*")::(tok (pos + 1))
-      else if Str.string_match (Str.regexp "/") input pos then 
-        Op("/")::(tok (pos + 1))
-      else if Str.string_match (Str.regexp "/") input pos then 
-        Op("/")::(tok (pos + 1))
-      else tok (pos + 1) in
-  tok 0
+let rec lex_help str pos lst_of_words = 
+  let length = String.length str in 
+    if pos >= length then lst_of_words
+    else if Str.string_match (Str.regexp "-?[0-9]+") str pos then 
+      let value = Str.matched_string str in
+      lex_help str (pos + (String.length value)) (lst_of_words @ [Num(int_of_string value)])
+    else if Str.string_match (Str.regexp "\\+\\|-\\|\\*\\|/") str pos then 
+      let value = Str.matched_string str in
+      lex_help str (pos + 1 ) (lst_of_words @[Op(value)])
+    else if Str.string_match (Str.regexp " ") str pos then 
+      lex_help str (pos + 1) lst_of_words
+    else failwith "words not in lecicon"
+
+let lexer str = 
+    lex_help str 0 []
 
 
 let rec parse_help lst =  match lst with
