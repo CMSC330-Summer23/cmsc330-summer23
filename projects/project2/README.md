@@ -1,15 +1,15 @@
 # Project 2: Lambda Calc Interpreter
-Due: June 30th, 2023 at 11:59 pm (late July 1st, *10% penalty* and July 2th, *20% penalty*)
+Due: June 25th, 2023 at 11:59 pm (late June 26th, *10% penalty*; June 27, *20% penalty*)
 
-Points: 35 public, 35 semipublic. 30 secret
+Points: 35 public, 35 semipublic, 30 secret
 
 ## Introduction
 
-In project 2 you will implement an interpreter for Lambda calculus. An interpreter consists of three componets: Lexer (tokenizer), parser, and evaluator (interpretor).
+In project 2 you will implement an interpreter for Lambda calculus. An interpreter consists of three components: Lexer (tokenizer), parser, and evaluator (interpreter).
 
 Your lexer function will convert an input string to a token list, your parser function will consume these tokens to produce an abstract symbol tree (AST), and your evaluator will reduce the lambda calculus expression.
 
-Here is an example call to the lexer, parser and evaluator.
+Here is an example call to the lexer, parser, and evaluator.
 
 ```ocaml
 let toks = tokenize "((Lx. x) a)" in
@@ -29,7 +29,7 @@ In your code, you may use any OCaml modules and features we have taught in this 
 
 ### Testing & Submitting
 
-First, make sure all your changes are pushed to github using the `git add`, `git commit`, and `git push` commands. You can refer to [my notes](https://bakalian.cs.umd.edu/assets/notes/git.pdf) for assistance. Additionally you can refer to a [testing repo](https://github.com/CliffBakalian/git-basics) I made, but it's recommended you make your own.
+First, make sure all your changes are pushed to Github using the `git add`, `git commit`, and `git push` commands. You can refer to [my notes](https://bakalian.cs.umd.edu/assets/notes/git.pdf) for assistance. Additionally you can refer to a [testing repo](https://github.com/CliffBakalian/git-basics) I made, but it's recommended you make your own.
 
 Next, to submit your project, you can run `submit` from your project directory.
 
@@ -43,11 +43,11 @@ You can write your own tests which only test the parser by feeding it a custom t
 parse_expr [Tok_LParen;Tok_Lambda;Tok_Var("x");Tok_dot;Tok_Var("x");Tok_RParen];;
 ```
 
-Start with the lexer. Test the lexer thoroughly. Then use the lexer to generate input to test your parser. Test your parser thoroughly. then use the lexer and parser to generate input for your evaluator.
+Start with the lexer. Test the lexer thoroughly. Then use the lexer to generate input to test your parser. Test your parser thoroughly. Then use the lexer and parser to generate input for your evaluator.
 
 ## Part 1: The Lexer (aka Scanner or Tokenizer)
 
-Your parser will take as input a list of tokens; this list is produced by the *lexer* (also called a *scanner* or *tokenizer*) as a result of processing the input string. Lexing is readily implemented by use of regular expressions, as demonstrated during lecture. Information about OCaml's regular expressions library can be found in the [`Str` module documentation][str doc]. You aren't required to use it, but you may find it helpful.
+Your parser will take as input a list of tokens; this list is produced by the *lexer* (also called a *scanner* or *tokenizer*) as a result of processing the input string. Lexing is readily implemented by the use of regular expressions, as demonstrated during lecture. Information about OCaml's regular expressions library can be found in the [`Str` module documentation][str doc]. You aren't required to use it, but you may find it helpful.
 
 Your lexer must be written in [lexer.ml](./src/lexer.ml). You will need to implement the following function: 
 
@@ -55,12 +55,12 @@ Your lexer must be written in [lexer.ml](./src/lexer.ml). You will need to imple
 
 - **Type:** `string -> token list` 
 - **Description:** Converts a lambda calc expression (given as a string) to a corresponding token list.
-- **Exceptions:** `raise Failure (tokenizing failed)` if the input contains characters which can not be represented by the tokens.
+- **Exceptions:** `raise Failure (tokenizing failed)` if the input contains characters which cannot be represented by the tokens.
 - **Examples:**
   ```ocaml
   tokenize "L" = [Tok_Lambda]
 
-  tokenize "(Lx. (x x))" = [Tok_LParen; Tok_Lambda; Tok_Var "x";Tok_Dot; Tok_LParen; Tok_Var "x";Tok_Var "x"; Tok_RParen; Tok_RParen]
+  tokenize "(Lx. (x x))" = [Tok_LParen; Tok_Lambda; Tok_Var "x"; Tok_Dot; Tok_LParen; Tok_Var "x"; Tok_Var "x"; Tok_RParen; Tok_RParen]
 
   tokenize ".. L aL." = [Tok_Dot; Tok_Dot; Tok_Lambda; Tok_Var "a"; Tok_Lambda; Tok_Dot]
 
@@ -69,12 +69,12 @@ Your lexer must be written in [lexer.ml](./src/lexer.ml). You will need to imple
 
 The `token` type is defined in [tokenTypes.ml](./src/tokenTypes.ml).
 
-Notes:
-- The lexer input is case sensitive.
-- Tokens can be separated by arbitrary amounts of whitespace, which your lexer should discard. Spaces, tabs ('\t') and newlines ('\n') are all considered whitespace.
-- When excaping characters with `\` within Ocaml strings/regexp you must use `\\` to escape from the string and regexp.
+Important Notes:
+- The lexer input is case-sensitive.
   - "L" should not be lexed as `[Tok_Var "L"]`, but as `[Tok_Lambda]`
-  - "l" should not be lexed as `[Tok_Lambda]` but as `[Tok_Var "l"]`.
+  -  "l" should not be lexed as `[Tok_Lambda]` but as `[Tok_Var "l"]`.
+- Tokens can be separated by arbitrary amounts of whitespace, which your lexer should discard. Spaces, tabs ('\t'), and newlines ('\n') are all considered whitespace.
+- When escaping characters with `\` within Ocaml strings/regexp, you must use `\\` to escape from both the string and the regexp.
 
 Token Name | Lexical Representation
 --- | ---
@@ -87,7 +87,6 @@ Token Name | Lexical Representation
 
 Notes:
 - Your lexing code will feed the tokens into your parser, so a broken lexer can cause you to fail tests related to parsing. 
-- In grammars given below, the syntax matching tokens (lexical representation) is used instead of the token name. For example, the grammars below will use `(` instead of `Tok_LParen`. 
 
 ## Part 2: Parsing Lambda Calc Expressions
 
@@ -122,6 +121,8 @@ let expr =
   | Application of expr * expr 
 ```
 
+In the grammar given below, the syntax matching tokens (lexical representation) is used instead of the token name. For example, the grammar below will use `(` instead of `Tok_LParen`. 
+
 The grammar is as follows:
 
 ```text
@@ -132,9 +133,10 @@ e -> x
 
 ## Part 3: Evaluating Parsed Expressions
 
-The evaluator will consist of four functions. All of which demonstrate properties of an evaluator. The four functions or `reduce`, `laze`, `eager`, and `isalpha`. All of these functions will be implemented in the `eval.ml` file located at `./src/eval.ml`.
+The evaluator will consist of four functions, all of which demonstrate properties of an evaluator. The four functions are `reduce`, `laze`, `eager`, and `isalpha`. All of these functions will be implemented in the `eval.ml` file located at `./src/eval.ml`.
 
-***Do not alpha convert in the next three functions***
+***Do not alpha convert in the next three functions!***
+
 #### `reduce`
 
 - **Type:** `expr -> token list` 
@@ -166,7 +168,7 @@ The evaluator will consist of four functions. All of which demonstrate propertie
   ```ocaml
   eager Var("x") = Var("x")
   eager Application(Func("x",Var("x")),Var("y")) = Var("y")
-  eager Application(Func("x",Var("x")),Application(Func("x",Var("x")),Var("x"))) = Application(Func("x",Var("x")),Var("z"))
+  eager Application(Func("x",Var("x")),Application(Func("y",Var("y")),Var("z"))) = Application(Func("x",Var("x")),Var("z"))
   ```
   
 #### `isalpha`
@@ -176,7 +178,7 @@ The evaluator will consist of four functions. All of which demonstrate propertie
   ```ocaml
   isalpha Var("x") Var("x") = true
   isalpha Var("y") Var("x") = false 
-  isalpha Func("x",Var("x") Func("y",Var("y") = true
+  isalpha Func("x",Var("x")) Func("y",Var("y")) = true
   ```
 
 ## Academic Integrity
