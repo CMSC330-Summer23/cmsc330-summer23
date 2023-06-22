@@ -15,3 +15,4 @@ List of discussions:
 + [Discussion 3](https://classroom.github.com/a/KEGxOAWP)
 + [Discussion 4](https://classroom.github.com/a/HfHC_k6b)
 + [Discussion 5](https://classroom.github.com/a/N6FbndoD)
++ [Discussion 6](https://classroom.github.com/a/1VNy5nO1)
