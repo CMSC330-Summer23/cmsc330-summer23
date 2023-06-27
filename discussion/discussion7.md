@@ -17,17 +17,19 @@ The whole idea behind "operational semantics" is trying to *systematically* unde
 <img width="765" alt="image" src="https://user-images.githubusercontent.com/25085195/225814404-8a04889b-079a-4e04-9a4a-d2ff5bd94c91.png">
 
 ### Problem 3: A more Complex Ocaml Expression
-![image](https://github.com/umd-cmsc330/summer23-ta/assets/47506459/b25f9bb6-e1b1-4038-860c-bdaddf81d0e0)
-![image](https://github.com/umd-cmsc330/summer23-ta/assets/47506459/6a53376b-9bea-46ba-b58e-412dd0ac8d02)
+![image](https://github.com/cmsc330-summer23/summer23/assets/47506459/4c046f0d-bc75-4e1e-954c-8f85d804fa3d)
+![image](https://github.com/cmsc330-summer23/summer23/assets/47506459/70346cac-7182-4110-9f83-33a66cc0005d)
+
 
 
 ### Problem 4: LOLCODE
-![image](https://github.com/umd-cmsc330/summer23-ta/assets/47506459/ca1f2817-83b9-430a-9e7a-7e8319e491d3)
-![image](https://github.com/umd-cmsc330/summer23-ta/assets/47506459/6f732a41-a46f-47b8-a393-86196f6e3b25)
+![image](https://github.com/cmsc330-summer23/summer23/assets/47506459/1c17985b-88e1-471a-9e63-e9963899b41e)
+![image](https://github.com/cmsc330-summer23/summer23/assets/47506459/1b1ffe1c-d7a8-4ad2-b65f-2cc5c302edb9)
 
 
 ### Problem 5: Lambda
 
-![image](https://github.com/umd-cmsc330/summer23-ta/assets/47506459/957e7204-4e99-40b8-942c-3cc1f0391dfa)
+![image](https://github.com/cmsc330-summer23/summer23/assets/47506459/b05ba298-e1e6-49ce-a4f9-20252f40624a)
+
 
 
