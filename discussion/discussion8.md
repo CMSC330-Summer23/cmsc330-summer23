@@ -2,7 +2,7 @@
 
 ## Reminders
 - Project 2 Due TOMORROW! (11:59 PM)
-- Graded quiz due tonight
+- Graded quiz and code due tonight
 - Final exam next week!
 
 ## Rust
