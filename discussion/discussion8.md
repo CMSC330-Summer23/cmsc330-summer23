@@ -58,5 +58,45 @@ Implement the following functions for linked lists.
 ## Code Blocks
 Let's do some practice with code blocks in rust.
 
+Important to note-- codeblocks don't return anything; they are expressions, so they evaluate to a value.
+
+What is the value of result?
+```rust
+let result = {
+        let x = 5;
+        let y = 10;
+        x + y
+    };
+```
+What about now?
+```rust
+let result = {
+        let x = 5;
+        let y = 10;
+        x + y;
+    };
+```
+What about now?
+
+```rust
+let result = {
+        {let x = 3; {if x == 2 {5} else {x}}}
+    };
+```
+
+What about now?
+```rust
+let result = {
+        {let x = 3; {if x == 2 {5}}}
+    };
+```
+
+What about now?
+```rust
+let result = {
+        {let x = 3; {if x == 2 {x;}}}
+    };
+```
+
 ## Submitting
 Submit the Rust coding portion of this discussion as you normally would with `git add`, `git commit -m ---`, and `git push`. Then use the submit command to submit your code to github. Remember that you also have a gradescope quiz due tonight on code blocks in rust.
