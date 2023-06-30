@@ -15,3 +15,6 @@ List of discussions:
 + [Discussion 3](https://classroom.github.com/a/KEGxOAWP)
 + [Discussion 4](https://classroom.github.com/a/HfHC_k6b)
 + [Discussion 5](https://classroom.github.com/a/N6FbndoD)
++ [Discussion 6](https://classroom.github.com/a/1VNy5nO1)
++ [Discussion 7](https://github.com/cmsc330-summer23/summer23/blob/master/discussion/discussion7.md)
++ [Discussion 8](https://classroom.github.com/a/ngeRslfa)
