@@ -1,0 +1,112 @@
+borrow checking is a aspect of the rust compiler to help with memory allocation/freeing
+
+rules of ownership:
+ + every value has a variable that is it's owner
+ + there can only be one owner at a time
+ + when the owner goes out of scope, the value is dropped (freed)
+
+ let x = 3; //3 is a value, x is the variable that owns 3
+ let y = x; //3 is a value, but y is now the owner 
+ // we say that ownership of 3 was MOVED from x to y
+ //so now when y goes out of scope, that value is dropped.
+
+rules of references
+ + all references must be valid
+ + one of the following, but not both, must be true 
+   + I have any number of immutable references (read only)
+   + I have one mutable reference (write access)
+
+
+
+what does this solve?
+we now have, some sort of known lifetime
+this prevents double free
+
+fn main(){
+    let x = String::from("hello"); //x is the owner of "hello"
+    let y = foo(&x); // passing in a borrowed reference of x to foo
+    println!("{x}"); //x now can be used
+}
+
+fn foo(a:&String) -> i32{ // a is now borrowing "hello"
+    3
+} //a is dropped so a is no longer borrowing for x
+
+
+
+lifetimes:
+a variable has both a data type and a lifetime associated with it
+that together, this is the type for the variable/value
+
+&x:&'static i32
+&y:&'b i32
+
+fn bar(x:&'static i32) -> i32{
+
+}
+
+bar(y); // this should fail because the function expected a different data type as arg
+
+rules of lifetimes:
+  lifetime checking is mostly done during function compilation
+  + for each reference passed in to a function, rust will give them all different lifetimes
+    fn f(x:&str) -> i32 //we the programmer write this
+    fn f(x:&'a str) -> i32 // rust compiler converts to this
+
+    fn f2(x:&str, y:&str) -> i32 // we the programmer write this
+    fn f2(x:&'a str, y:&'b str) -> i32 //rust compiler converts to this
+    
+    fn f3(x:i32) -> i32 // we the programmer write this
+    fn f3(x:i32) -> i32 //rust does not modify because x is not a reference
+
+    fn f3(x:i32, y:&str) -> i32 //programmer
+    fn f3(x:i32, y:&'a str) -> i32 //rust
+  + if there is exactly 1 lifetime parameter, the then output value gets that lifetime
+    fn f(x:&str) -> &str //we the programmer write this
+    fn f(x:&'a str) -> &'a str // rust compiler converts to this
+
+    fn f2(x:&str, y:&str) -> &str //programmer
+    fn f2(x:&'a str, y:&'b str) -> &str // rust can only infer args here
+
+  + if there are multiple input lifetimes AND one of them is self or &self
+    then the output is the lifetime of self
+
+    fn f(x:&self) -> &str //we the programmer write this
+    fn f(x:&'a self) -> &'a str //rust
+
+    fn f2(x:&self , y:&str) -> &str //programmer
+    fn f2(x:&'a self , y:&'b str) -> &'a str // rust
+
+    fn f3(x:self , y:&str, z:&str) -> &str //programmer 
+    fn f3(x:'c self , y:&'a str, z:&'b str) -> &'c str //rust
+
+
+
+  + for each reference passed in to a function, rust will give them all different lifetimes
+  + if there is exactly 1 lifetime parameter, the then output value gets that lifetime
+  + if there are multiple input lifetimes AND one of them is self or &self
+    then the output is the lifetime of self
+
+  case that is missing:
+    + if multiple input references and no self or &self
+    what to do here? 
+      rust will require you the programmer to give explicit lifetimes
+
+
+
+      
+
+
+    
+  
+
+
+
+
+
+
+
+
+
+
+
