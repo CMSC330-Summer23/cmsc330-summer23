@@ -19,4 +19,4 @@ List of discussions:
 + [Discussion 6](https://classroom.github.com/a/1VNy5nO1)
 + [Discussion 7](https://github.com/cmsc330-summer23/summer23/blob/master/discussion/discussion7.md)
 + [Discussion 8](https://classroom.github.com/a/ngeRslfa)
-+ [Discussion 9]([https://classroom.github.com/a/ngeRslfa](https://classroom.github.com/a/qUWgZNhz)https://classroom.github.com/a/qUWgZNhz)
++ [Discussion 9](https://classroom.github.com/a/qUWgZNhz)
